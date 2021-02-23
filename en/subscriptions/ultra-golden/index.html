@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--Favicon-->
+<link rel="icon" href="https://realandychang.us/img/andypfp.png" sizes="32x32" />
+<link rel="icon" href="https://realandychang.us/img/andypfp.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://realandychang.us/img/andypfp.png" />
+<meta name="msapplication-TileImage" content="https://realandychang.us/img/andypfp.png" /> 
+<!--SEO and Title-->
+<meta name="description" content="Checkout">
+<title>Checkout -Andy Chang</title>
+<head>     
+<style>
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 1px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 15px;
+}
+
+/* Page Content */
+.content {padding:20px;}
+</style>
+
+<div class="header">
+  <h1><a style=" text-decoration:none" href="https://realandychang.us"><span style="color:#000">Andy Chang Checkout</a></span></h1></div>
+     </head>
+     <body>
+     <h1><!--divide header--></h1>
+<center><p>You selected <b>Ultra Golden Subscription</b></center>
+<div id="smart-button-container">
+      <div style="text-align: center;">
+        <div id="paypal-button-container"></div>
+      </div>
+    </div>
+<center><h3>By continuing purchase, you accepted our <a href="https://realandychang.us/term-of-service/" target="_blank"><span style="color:#0083FF">Term of Service</a></span> and <a href="https://realandychang.us/privacy-policy/" target="_blank"><span style="color:#0083FF">Privacy Policy</a></span>.</h3></center>
+<center><h3><a href="https://realandychang.us"><span style="color:#0083FF">Disagree to terms</a></h3></center>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+  <script>
+    function initPayPalButton() {
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'pay',
+          
+        },
+
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"amount":{"currency_code":"USD","value":20.00}}]
+          });
+        },
+
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+          });
+        },
+
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+  </script>
+  <footer>
+    <center><h3>Copyright © 2021 Andy Chang</h3></center>
+      </body>
+      </html>
